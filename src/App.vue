@@ -5,11 +5,15 @@
 </template>
 
 <script>
+import storage from './storage/'
 export default {
   data() {
     return {}
   },
-  methods: {}
+  methods: {},
+  mounted() {
+    storage.clear('x', 'user')
+  }
 }
 </script>
 <style>
