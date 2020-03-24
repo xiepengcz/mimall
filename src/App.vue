@@ -5,16 +5,18 @@
 </template>
 
 <script>
-import storage from './storage/'
+// import storage from './storage/'
 export default {
   data() {
-    return {}
+    return {
+      res: {}
+    }
   },
   methods: {},
-  mounted() {
-    storage.clear('x', 'user')
-  }
+  mounted() {}
 }
 </script>
+
 <style>
+@import './assets/sass/reset.scss'
 </style>
