@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import lazyload from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 // import env from './env'
 
 // mock开头
@@ -22,13 +24,17 @@ axios.interceptors.response.use(function (response) {
   if (res.status === 0) {
     return res.data
   } else if (res.status === 10) {
-    window.location.href = '/#/login'
+    if (location.hash !== '#/index') { window.location.href = '/#/login' }
   } else {
     alert(res.msg)
+    return Promise.reject(res)
   }
 })
-
+Vue.use(lazyload, {
+  loading: '/imgs/loading-svg/loading-spinning-bubbles.svg'
+})
 Vue.use(VueAxios, axios)
+Vue.use(VueCookie)
 Vue.config.productionTip = false
 
 new Vue({

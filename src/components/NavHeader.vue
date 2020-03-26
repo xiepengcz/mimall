@@ -221,7 +221,7 @@ export default {
   name: 'nav-header',
   data() {
     return {
-      username: 'xie',
+      username: '',
       phoneList: []
     }
   },
@@ -284,8 +284,9 @@ export default {
         background-color: #ff6600;
         text-align: center;
         color: #fff;
+        margin-right: 0;
         .icon-cart {
-          @include bgImg(16px, 12px, '../imgs/icon-cart-checked.png');
+          @include bgImg(16px, 12px, '/imgs/icon-cart-checked.png');
           margin-right: 4px;
         }
       }
@@ -306,12 +307,12 @@ export default {
           width: 110px;
           height: 55px;
           &:before {
-            @include bgImg(55px, 55px, '../imgs/mi-logo.png', 55px);
+            @include bgImg(55px, 55px, '/imgs/mi-logo.png', 55px);
             content: '';
             transition: margin 0.2s;
           }
           &:after {
-            @include bgImg(55px, 55px, '../imgs/mi-home.png', 55px);
+            @include bgImg(55px, 55px, '/imgs/mi-home.png', 55px);
             content: '';
           }
           &:hover:before {
@@ -338,10 +339,11 @@ export default {
             .children {
               height: 220px;
               opacity: 1;
+              z-index: 11;
             }
           }
           .children {
-            z-index: 2;
+            z-index: 9;
             position: absolute;
             top: 112px;
             left: 0px;
@@ -409,7 +411,7 @@ export default {
             padding-left: 14px;
           }
           a {
-            @include bgImg(18px, 18px, '../imgs/icon-search.png');
+            @include bgImg(18px, 18px, '/imgs/icon-search.png');
             margin-left: 15px;
           }
         }

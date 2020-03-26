@@ -12,11 +12,20 @@ export default {
       res: {}
     }
   },
-  methods: {},
+  methods: {
+    getUser() {
+      this.axios.get('/user').then(() => {
+        // 保存到vuex
+      })
+    },
+    getCartCount() {}
+  },
   mounted() {}
 }
 </script>
 
-<style>
-@import './assets/sass/reset.scss'
+<style lang="scss">
+@import './assets/sass/reset.scss';
+@import './assets/sass/config.scss';
+@import './assets/sass/button.scss';
 </style>

@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer-box">
       <div class="footer-logo">
-        <img src="../imgs/logo-footer.png" width="60px" alt />
+        <img src="/imgs/logo-footer.png" width="60px" alt />
       </div>
       <img class="footer-img" src="https://cnbj1.fds.api.xiaomi.com/staticsfile/global/slogan2020.png" alt />
       <div class="footer-link">

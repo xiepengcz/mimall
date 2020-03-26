@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../pages/home'
 import Index from '../pages/index'
+import Login from '../pages/login'
 import Product from '../pages/product'
 import Detail from '../pages/detail'
 import Cart from '../pages/cart'
@@ -11,6 +12,12 @@ import OrderList from '../pages/orderList'
 import OrderPay from '../pages/orderPay'
 import AliPay from '../pages/aliPay'
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// import style
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)
 Vue.use(VueRouter)
 
 const routes = [
@@ -41,6 +48,10 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: Cart
+  }, {
+    path: '/login',
+    name: 'login',
+    component: Login
   },
   {
     path: '/order',
