@@ -18,7 +18,7 @@
               <input type="text" placeholder="请输入帐号" v-model="username" />
             </div>
             <div class="input">
-              <input type="password" placeholder="请输入密码" v-model="password" @keyup.enter="login"/>
+              <input type="password" placeholder="请输入密码" v-model="password" @keyup.enter="login" />
             </div>
             <div class="btn-box">
               <a href="javascript:;" class="btn" @click="login">登录</a>
@@ -47,8 +47,8 @@ export default {
   name: 'login',
   data() {
     return {
-      username: '',
-      password: '',
+      username: 'admin',
+      password: 'admin',
       userId: ''
     }
   },
@@ -62,7 +62,7 @@ export default {
         })
         .then(res => {
           this.$cookie.set('userId', res.id, { expires: 'Session' })
-          // this.$store.dispatch('saveUserName',res.username);
+          // this.$store.dispatch('saveUserName', res.username)
           this.saveUserName(res.username)
           this.$router.push({
             name: 'index',

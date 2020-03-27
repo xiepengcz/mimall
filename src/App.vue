@@ -9,18 +9,27 @@
 export default {
   data() {
     return {
-      res: {}
     }
   },
   methods: {
     getUser() {
-      this.axios.get('/user').then(() => {
+      this.axios.get('/user').then(res => {
         // 保存到vuex
+        console.log(res)
+        this.$store.dispatch('saveUserName', res.username)
       })
     },
-    getCartCount() {}
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then((res) => {
+        console.log(res)
+        this.$store.dispatch('saveCartCount', res)
+      })
+    }
   },
-  mounted() {}
+  mounted() {
+    this.getUser()
+    this.getCartCount()
+  }
 }
 </script>
 

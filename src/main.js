@@ -5,6 +5,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import lazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import store from './store'
 // import env from './env'
 
 // mock开头
@@ -39,5 +40,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
