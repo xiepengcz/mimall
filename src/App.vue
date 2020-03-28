@@ -8,20 +8,16 @@
 // import storage from './storage/'
 export default {
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     getUser() {
-      this.axios.get('/user').then(res => {
-        // 保存到vuex
-        console.log(res)
+      this.axios.get('/user').then((res = {}) => {
         this.$store.dispatch('saveUserName', res.username)
       })
     },
     getCartCount() {
-      this.axios.get('/carts/products/sum').then((res) => {
-        console.log(res)
+      this.axios.get('/carts/products/sum').then((res = 0) => {
         this.$store.dispatch('saveCartCount', res)
       })
     }

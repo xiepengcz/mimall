@@ -2,7 +2,7 @@
   <div class="product">
     <product-param>
       <template v-slot:buy>
-        <button class="btn">立即购买</button>
+        <button class="btn" @click="buy">立即购买</button>
       </template>
     </product-param>
     <div class="cc9">
@@ -11,7 +11,7 @@
           <swiper-slide v-for="(item,index) in slideList" :key="index">
             <h1>小米CC9</h1>
             <p>3200万+4800万 前后双旗舰相机</p>
-            <img v-lazy="item" alt />
+            <img :src="item" alt />
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
@@ -106,6 +106,10 @@ export default {
         videoEle.load()
         videoEle.play()
       }
+    },
+    buy() {
+      const id = this.$route.params.id
+      this.$router.push(`/detail/${id}`)
     }
   }
 }
