@@ -62,6 +62,7 @@ export default {
   line-height: 70px;
   border: 1px solid $colorH;
   background-color: $colorG;
+  box-shadow: 0 3px 3px #cccccc45;
   &.is_fixed {
     position: fixed;
     top: 0;
@@ -79,9 +80,13 @@ export default {
       font-size: $fontJ;
       a {
         color: $colorC;
+        &:hover {
+          color: $colorA;
+        }
       }
       span {
         margin: 0 10px;
+        color: $colorC;
       }
     }
   }

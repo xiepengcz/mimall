@@ -12,12 +12,6 @@ import OrderList from '../pages/orderList'
 import OrderPay from '../pages/orderPay'
 import AliPay from '../pages/aliPay'
 
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-
-// import style
-import 'swiper/dist/css/swiper.css'
-
-Vue.use(VueAwesomeSwiper)
 Vue.use(VueRouter)
 
 const routes = [
@@ -83,7 +77,10 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router

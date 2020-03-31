@@ -51,10 +51,14 @@
 
 <script>
 import ProductParam from './../components/ProductParam'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 export default {
   name: 'product',
   components: {
-    ProductParam
+    ProductParam,
+    swiperSlide,
+    swiper
   },
   data() {
     return {

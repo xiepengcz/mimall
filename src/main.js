@@ -7,7 +7,10 @@ import lazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
 import store from './store'
 // import env from './env'
+// import Swiper from 'vue-awesome-swiper'
+// import 'swiper/dist/css/swiper.css'
 
+// Vue.use(Swiper)
 // mock开头
 const mock = false
 if (mock) {
