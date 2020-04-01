@@ -5,11 +5,13 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import lazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import { Message } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 // import env from './env'
 // import Swiper from 'vue-awesome-swiper'
 // import 'swiper/dist/css/swiper.css'
-
+// Vue.use(Message)
 // Vue.use(Swiper)
 // mock开头
 const mock = false
@@ -30,7 +32,7 @@ axios.interceptors.response.use(function (response) {
   } else if (res.status === 10) {
     if (location.hash !== '#/index') { window.location.href = '/#/login' }
   } else {
-    alert(res.msg)
+    Message.error(res.msg)
     return Promise.reject(res)
   }
 })
@@ -39,6 +41,7 @@ Vue.use(lazyload, {
 })
 Vue.use(VueAxios, axios)
 Vue.use(VueCookie)
+Vue.prototype.$message = Message
 Vue.config.productionTip = false
 
 new Vue({
