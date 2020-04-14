@@ -14,16 +14,17 @@
 
 目前只实现了 首页、商品详情页、商品购买页、购物车页面、订单页和登录页面
 
-![](imgs\2.png)
+![](./imgs/2.png)
 
-![](imgs\1.png)
+![](./imgs/1.png)
 
-![](imgs\6.png)
+![](./imgs/6.png)
 
-![](imgs\5.png)
+![](./imgs/5.png)
 
-![](imgs\4.png)
+![](./imgs/4.png)
 
-![](imgs\3.png)
+![](./imgs/3.png)
 
-![](imgs\7.png)
+![](./imgs/7.png)
+
