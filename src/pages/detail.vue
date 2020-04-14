@@ -1,269 +1,267 @@
 <template>
-  <div>
-    <product-param class="product-param"></product-param>
-    <div class="detail">
-      <!-- 左侧轮播图 -->
+  <div class="detail">
+    <product-param v-bind:title="product.name"></product-param>
+    <div class="wrapper">
       <div class="container clearfix">
-        <div class="pro-view fl">
+        <div class="swiper">
           <swiper :options="swiperOption">
-            <swiper-slide v-for="(item,index) in slideList" :key="index">
-              <img :src="item" alt />
+            <swiper-slide>
+              <img src="/imgs/detail/phone-1.jpg" alt />
             </swiper-slide>
+            <swiper-slide>
+              <img src="/imgs/detail/phone-2.jpg" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img src="/imgs/detail/phone-3.jpg" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img src="/imgs/detail/phone-4.jpg" alt />
+            </swiper-slide>
+            <!-- Optional controls -->
             <div class="swiper-pagination" slot="pagination"></div>
-            <div class="swiper-button-prev" slot="button-prev"></div>
-            <div class="swiper-button-next" slot="button-next"></div>
           </swiper>
         </div>
-        <div class="pro-info fr">
-          <span class="name">小米CC9</span>
-          <p
-            class="desc"
-          >「6GB+128GB购机赠10000mAh充电宝或半入耳式耳机」前置3200万自拍 / 索尼4800万超广角三摄 / 多色炫彩轻薄机身 / 6.39英寸三星 AMOLED水滴屏 /4030mAh大电量 / 骁龙710处理器 / 屏幕指纹 / NFC功能 / 红外遥控功能 / Game Turbo2.0游戏加速</p>
-          <p class="company desc">小米自营</p>
-          <div class="pro-price">
-            <span class="price">
-              1699元
-              <span>1999元</span>
-            </span>
+        <div class="content">
+          <h2 class="item-title">{{product.name}}</h2>
+          <p class="item-info">
+            相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS / 骁龙845处理器 / 红
+            <br />外人脸解锁 / AI变焦双摄 / 三星 AMOLED 屏
+          </p>
+          <div class="delivery">小米自营</div>
+          <div class="item-price">
+            {{product.price}}元
+            <span class="del">1999元</span>
           </div>
-          <div class="adderss">
-            <i></i>
-            <div class="addr">广东 广州市 荔湾区 白鹤洞街道</div>
+          <div class="line"></div>
+          <div class="item-addr">
+            <i class="icon-loc"></i>
+            <div class="addr">北京 北京市 朝阳区 安定门街道</div>
             <div class="stock">有现货</div>
           </div>
-          <div class="list-warp">
-            <div class="versions">
-              <div class="title">选择版本</div>
-              <ul class="step-list">
-                <li class="fl">
-                  <a href>
-                    <span>6GB+128GB</span>
-                    <span class="price">1699元</span>
-                  </a>
-                </li>
-                <li class="fr">
-                  <a href>
-                    <span>6GB+64GB</span>
-                    <span class="price">1499元</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="colors">
-              <div class="title">选择颜色</div>
-              <ul class="step-list">
-                <li class="fl">
-                  <a href>
-                    <span>深蓝星球（蓝色）</span>
-                  </a>
-                </li>
-                <li class="fr">
-                  <a href>
-                    <span>白色恋人（白色）</span>
-                  </a>
-                </li>
-              </ul>
+          <div class="item-version clearfix">
+            <h2>选择版本</h2>
+            <div class="phone fl" :class="{'checked':version==1}" @click="version=1">6GB+64GB 全网通</div>
+            <div class="phone fr" :class="{'checked':version==2}" @click="version=2">4GB+64GB 移动4G</div>
+          </div>
+          <div class="item-color">
+            <h2>选择颜色</h2>
+            <div class="phone checked">
+              <span class="color"></span>
+              深空灰
             </div>
           </div>
-          <div class="total">
-            <li class="addr">小米CC9 6GB+128GB 深蓝星球</li>
-            <span>1699元</span>
-            <li class="stock">总计： 1699元</li>
+          <div class="item-total">
+            <div class="phone-info clearfix">
+              <div class="fl">{{product.name}} {{version==1?'6GB+64GB 全网通':'4GB+64GB 移动4G'}} 深灰色</div>
+              <div class="fr">{{product.price}}元</div>
+            </div>
+            <div class="phone-total">总计：{{product.price}}元</div>
           </div>
-          <div class="btn btn-huge" @click="addCart">
-            <a href="javascript:;">加入购物车</a>
+          <div class="btn-group">
+            <a href="javascript:;" class="btn btn-huge fl" @click="addCart">加入购物车</a>
           </div>
         </div>
       </div>
-      <div class="container info">
-        <p>价格说明</p>
-        <img src="/imgs/detail/item-price.jpeg" alt />
-      </div>
-      <service-bar></service-bar>
     </div>
+    <div class="price-info">
+      <div class="container">
+        <h2>价格说明</h2>
+        <div class="desc">
+          <img src="/imgs/detail/item-price.jpeg" alt />
+        </div>
+      </div>
+    </div>
+    <service-bar></service-bar>
   </div>
 </template>
-
 <script>
-import ProductParam from './../components/ProductParam'
-import ServiceBar from '../components/ServiceBar'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
+import ProductParam from './../components/ProductParam'
+import ServiceBar from './../components/ServiceBar'
 export default {
   name: 'detail',
-  components: {
-    ProductParam,
-    ServiceBar,
-    swiper,
-    swiperSlide
-  },
   data() {
     return {
+      id: this.$route.params.id, // 获取商品ID
+      err: '',
+      version: 1, // 商品版本切换
+      product: {}, // 商品信息
       swiperOption: {
-        autoplay: {
-          delay: 6000
-        },
-        loop: true,
-        effect: 'fade',
+        autoplay: true,
         pagination: {
           el: '.swiper-pagination',
           clickable: true
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
         }
-      },
-      slideList: [
-        '/imgs/detail/phone-1.jpg',
-        '/imgs/detail/phone-2.jpg',
-        '/imgs/detail/phone-3.jpg',
-        '/imgs/detail/phone-4.jpg'
-      ]
+      }
     }
   },
+  components: {
+    swiper,
+    swiperSlide,
+    ProductParam,
+    ServiceBar
+  },
+  mounted() {
+    this.getProductInfo()
+  },
   methods: {
+    getProductInfo() {
+      this.axios.get(`/products/${this.id}`).then(res => {
+        this.product = res
+      })
+    },
     addCart() {
-      const id = this.$route.params.id
       this.axios
         .post('/carts', {
-          productId: id,
+          productId: this.id,
           selected: true
         })
         .then((res = { cartProductVoList: 0 }) => {
           this.$store.dispatch('saveCartCount', res.cartTotalQuantity)
+          // this.$router.push('/cart');
+          this.$message.success('成功加入购物车')
         })
     }
   }
 }
 </script>
-
 <style lang="scss">
-@import './../assets/sass/mixin.scss';
 @import './../assets/sass/config.scss';
+@import './../assets/sass/mixin.scss';
 .detail {
-  padding-top: 32px;
-  .pro-view {
-    width: 560px;
-    img {
-      width: 560px;
-      height: 100%;
-    }
-  }
-  .pro-info {
-    width: 606px;
-    .name {
-      font-size: 24px;
-    }
-    .desc {
-      font-size: 14px;
-    }
-    .company {
-      color: $colorA;
-      margin-top: 14px;
-    }
-    .pro-price {
-      margin: 12px 0 20px;
-      .price {
-        font-size: 18px;
-        color: $colorA;
-        span {
-          margin-left: 10px;
-          color: $colorE;
-          text-decoration: line-through;
-          font-size: 14px;
-        }
+  .wrapper {
+    .swiper {
+      float: left;
+      width: 642px;
+      height: 617px;
+      margin-top: 5px;
+      img {
+        width: 100%;
+        height: 100%;
       }
     }
-    .adderss {
-      height: 104px;
-      background-color: #fafafa;
-      border: 1px solid #ccc;
-      position: relative;
-      font-size: 14px;
-      i {
-        position: absolute;
-        display: block;
-        width: 14px;
-        height: 20px;
-        background: url('/imgs/icon-loc.png') no-repeat 50%;
-        background-size: contain;
-        top: 30px;
-        left: 30px;
+    .content {
+      float: right;
+      width: 584px;
+      height: 870px;
+      .item-title {
+        font-size: 28px;
+        padding-top: 30px;
+        padding-bottom: 16px;
+        height: 26px;
       }
-      .addr {
-        display: inline-block;
-        margin: 30px 0 0 50px;
+      .item-info {
+        font-size: 14px;
+        height: 36px;
       }
-      .stock {
-        margin: 4px 0 0 50px;
-        color: $colorA;
-      }
-    }
-    .list-warp {
-      margin-top: 10px;
-      .title {
-        font-size: 18px;
-      }
-      .step-list {
-        height: 60px;
+      .delivery {
         font-size: 16px;
-        color: $colorA;
-        margin-top: 10px;
-        li {
-          width: 290px;
-          height: 40px;
-          line-height: 40px;
-          text-align: center;
-          border: 1px solid $colorA;
-          margin-right: 14px;
-          &:nth-child(2n) {
-            margin-right: 0;
-          }
-          a {
-            color: $colorA;
-          }
-        }
-        .price {
-          color: $colorC;
+        color: #ff6700;
+        margin-top: 26px;
+        margin-bottom: 14px;
+        height: 15px;
+      }
+      .item-price {
+        font-size: 20px;
+        color: #ff6700;
+        height: 19px;
+        .del {
+          font-size: 16px;
+          color: #999999;
           margin-left: 10px;
+          text-decoration: line-through;
         }
       }
-    }
-    .total {
-      height: 104px;
-      background-color: #fafafa;
-      position: relative;
-      font-size: 14px;
-      li {
-        display: inline-block;
-        padding: 20px 0 0 50px;
+      .line {
+        height: 0;
+        margin-top: 25px;
+        margin-bottom: 28px;
+        border-top: 1px solid #e5e5e5;
       }
-      span {
-        float: right;
-        margin-top: 20px;
-        margin-right: 60px;
+      .item-addr {
+        height: 108px;
+        background-color: #fafafa;
+        border: 1px solid #e5e5e5;
+        box-sizing: border-box;
+        padding-top: 31px;
+        padding-left: 64px;
+        font-size: 14px;
+        line-height: 14px;
+        position: relative;
+        .icon-loc {
+          position: absolute;
+          top: 27px;
+          left: 34px;
+          @include bgImg(20px, 20px, '/imgs/detail/icon-loc.png');
+        }
+        .addr {
+          color: #666666;
+        }
+        .stock {
+          margin-top: 15px;
+          color: #ff6700;
+        }
       }
-      .stock {
-        display: block;
-        padding: 20px 0 0 50px;
-        color: $colorA;
-        font-size: 24px;
+      .item-version,
+      .item-color {
+        margin-top: 30px;
+        h2 {
+          font-size: 18px;
+          margin-bottom: 20px;
+        }
       }
-    }
-    .btn {
-      margin: 40px 0;
-      a {
-        color: #fff;
+      .item-version,
+      .item-color {
+        .phone {
+          width: 287px;
+          height: 50px;
+          line-height: 50px;
+          font-size: 16px;
+          color: #333333;
+          border: 1px solid #e5e5e5;
+          box-sizing: border-box;
+          text-align: center;
+          cursor: pointer;
+          span {
+            color: #666666;
+            margin-left: 15px;
+          }
+          .color {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background-color: #666666;
+          }
+          &.checked {
+            border: 1px solid #ff6600;
+            color: #ff6600;
+          }
+        }
+      }
+      .item-total {
+        height: 108px;
+        background: #fafafa;
+        padding: 24px 33px 29px 30px;
+        font-size: 14px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        box-sizing: border-box;
+        .phone-total {
+          font-size: 24px;
+          color: #ff6600;
+          margin-top: 18px;
+        }
       }
     }
   }
-  .info {
-    p {
-      font-size: 22px;
-    }
-    img {
-      height: 189px;
+  .price-info {
+    background-color: #f3f3f3;
+    height: 340px;
+    h2 {
+      font-size: 24px;
+      color: #333333;
+      padding-top: 38px;
+      margin-bottom: 30px;
     }
   }
 }
